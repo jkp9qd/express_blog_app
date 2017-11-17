@@ -1,107 +1,96 @@
 $(document).ready(function(){
 
-	//creating our form
-	var formDiv = $("<div id='form-div'>");
-	var form_header = $("<h3>");
-	form_header.text("Add Student Grade here to change grade to average below");
-	formDiv.append(form_header);
-	var form = $("<form id='grade-form'>");
-	var select = $("<select id='student-select'>");
+  var formDiv = $("<div id='form-div'>");
+  formDiv.css({marginLeft: '25px'})
+  var blogForm = $('<form>');
+  var nameLabel = $('<label>',{
+    text: 'Name'
+  });
+  var nameInput = $('<input>',{
+    type: 'text',
+    width: 300,
+    id: 'name-input'
+  });
+  var postLabel = $('<label>',{
+    text: 'Post'
+  });
+  var blogTA = $('<textarea>',{
+    width: 300,
+    height: 150,
+    id: 'blog-input'
+  });
+  var submitInput = $('<input>',{
+    type: 'submit',
+    class: 'btn btn-primary',
+    value: 'Post'
+  });
+  blogForm.append(nameLabel).append("<br>").append(nameInput).append('<br>').append(postLabel).append("<br>").append(blogTA).append("<br>").append(submitInput);
+  formDiv.append(blogForm);
+  $('div').eq(1).append(formDiv);
 
-	$(document).on('submit', '#form-div', function(e){
-		e.preventDefault();
+  $(document).on('submit', '#form-div', (e) => {
+    e.preventDefault();
+    var obj = {
+      name: $('#name-input').val(),
+      post: $('#blog-input').val()
+    }
+    $.ajax({
+      method: 'POST',
+      url: '/api/post-blog',
+      data: JSON.stringify(obj),
+      contentType: 'application/json',
+      dataType: 'json'
+    }).then(function(res){
+      $.ajax({
+        method: 'GET',
+        url: '/api/get-posts'
+      }).then(function(results){
+        $('#noPostP').remove()
+        $('#posts-div').remove();
+        if(results.length > 0){
+          var postsDiv = $('<div id="posts-div">');
+          var postDiv, postName, postBlog;
+          for(var i = 0; i < results.length; i++){
+            postDiv = $('<div>');
+            postDiv.addClass('well');
+            postDiv.css({display: 'inline-block', marginLeft: '25px'})
 
-		$("#grades-table > tbody").empty();
+            postName = $('<p class="post-name">');
+            postName.text("Name: " + results[i].name);
 
-		var student = $('#student-select').val();
-		var grade = $('#grade-input').val();
-		var obj = {name: student, grade: grade};
-		var newRow, nameTd, gradeTd;
-		/*
-			remember our post route we set up on the server side
-			as your see, when our form is submitted, we are storing all of our 
-			values in an object, and then stringifying (research) this object
-			in order for it to be accepted by your middleware and processed as 
-			a json object on the server side. You see that we are sending that objected
-			out by putting it in the data key of our ajax method. As you can see, there are other
-			keys mentioned here besides method and post. These are meant to communicate with 
-			your servier in order to let it know that you are sending over json. They need 
-			to communicate like this or the object will come through as undefined.
-			The bodyparser on the server side is what can translate this into json when sent through
-		*/
-		$.ajax({
-			method: 'POST',
-			url: '/grade-post',
-			data: JSON.stringify(obj),
-			contentType: 'application/json',
-			dataType: 'json',
-			success: function(results){
-				//when we are doing res.json(grade_object) on the server side,
-				//the results are what we are sending right back to the client
-				//so we can see the results realtime, because we want this data
-				//to be seen by the client right away
-				//console.log(results)
-				//then, append our items to the dom through jquery
-				console.log(results)
-				var newRow, nameTd, gradeTd;
-				for(var i = 0; i < results.length; i++){
-					newRow = $('<tr id="grades-tr">')
-					nameTd = $('<td class="name">');
-					gradeTd = $('<td class="grade">');
+            postBlog = $("<p>");
+            postBlog.text("Post: " + results[i].post);
 
-					nameTd.text(results[i].name);
-					gradeTd.text(Math.ceil(parseInt(results[i].grade)));
-					newRow.append(nameTd).append(gradeTd);
-					$('#tbody').append(newRow)
-				}
-			}
+            postDiv.append(postName).append("<br>").append(postBlog);
+            postsDiv.append(postDiv).append("<br>");
+          }
+          $('#posts').append(postsDiv);
 
-		});
-	});
+        } else {
+          var noPostP = $("<p>",{
+            text: 'No Posts',
+            id: 'noPostP'
+          });
+          $('#posts').append(noPostP);
+        }
+      });
+    })
+    $('#name-input').val("");
+    $('#blog-input').val("")
+  });
 
-	//remember our '/api/get-object' on the server side
-	//whatever we are sending through by res.json or res.send
-	//is what is coming through as the callback, we we are defining as 'res'
-	$.ajax({
-		method: 'GET',
-		url: '/api/get-object'
-	}).then(function(res){
-		//console.log(res)
-		var option;
-
-		//adding option to my select element on my form...variables created above
-		//then adding everything to the form div, then to the DOM
-		res.forEach((student) => {
-			option = $("<option>");
-			option.attr('value', student.name);
-			option.text(student.name);
-			select.append(option);
-		});
-		var grade_input = $("<input>",{
-			id: 'grade-input',
-			type: 'text'
-		});
-		grade_input.width(40);
-		var submit = $('<input>',{
-			type: 'submit'
-		});
-		form.append(select).append("</br>").append(grade_input).append("</br>").append(submit);
-		formDiv.append(form);
-		$('div').eq(0).append(formDiv);
-
-
-		//then, append our object to the table as well
-		var newRow, nameTd, gradeTd;
-		for(var i = 0; i < res.length; i++){
-			newRow = $('<tr id="grades-tr">')
-			nameTd = $('<td class="name">');
-			gradeTd = $('<td class="grade">');
-
-			nameTd.text(res[i].name);
-			gradeTd.text(Math.ceil(parseInt(res[i].grade)));
-			newRow.append(nameTd).append(gradeTd);
-			$('#tbody').append(newRow)
-		}
-	});
+  $.ajax({
+    method: 'GET',
+    url: '/api/get-posts'
+  }).then(function(res){
+    console.log(res)
+    if(res.length <= 0){
+      var noPostP = $("<p>",{
+        text: 'No Posts',
+        id: 'noPostP'
+      });
+      $('#posts').append(noPostP);
+    }
+  });
 
 });
