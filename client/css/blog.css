@@ -1,3 +1,7 @@
+.jumbotron {
+  background: url(../img/prolang.jpeg);
+  background-size: cover;
+
 h3 {
 	margin-left: 25px;
 	border-bottom: 16;

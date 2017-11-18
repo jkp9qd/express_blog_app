@@ -7,102 +7,80 @@
 	<title>Jarvis Express Blog App</title>
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="../css/styles.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
 </head>
 <body>
 	
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark" fixed-top" id="mainNav">  <!-- Brand/logo -->
-		<div class="container">
-  		<a class="navbar-brand" href="index.html">Jarvis Potter</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-  		  Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="post.html">Blog Post</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-          </ul>
+	<div id='header'>
+      <nav class='navbar navbar-default'>
+        <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Jarvis K Potter</a>
+          <div class="navbar-header">
+            <button type="button" class='navbar-toggle collapsed' data-toggle="collapse" data-target= '#bs-navbar-collapse-1' >
+              <span class='sr-only'>Toggle Navigation</span>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+            </button>
+            <p class='navbar-brand'></p>
         </div>
-      </div>
-    </nav>
+          <div id="bs-navbar-collapse-1"class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
 
    <div class = "container" style="padding-top: 20px;">
   <div class="jumbotron text-center">
   <h1 class="display-3">Portfolio</h1>
-  <p class="lead">These are the MAGNIFICENT Portfolio that I built!</p>
+  <p class="lead">These is the MAGNIFICENT Portfolio that I built!</p>
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="/blog" role="button">Create a Post!</a>
   </p>
 </div>
 
-<div class="container">
-<div class="card-columns">
-  <div class="card">
-    <img class="card-img-top img-fluid" src="../img/htmlcss.jpg" height ="180" width="auto" alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">HTML & CSS</h4>
-      <p class="card-text"> HTML (the Hypertext Markup Language) and CSS (Cascading Style Sheets) are two of the core technologies for building Web pages. HTML provides the structure of the page, CSS the (visual and aural) layout, for a variety of devices. Along with graphics and scripting, HTML and CSS are the basis of building Web pages and Web Applications.</p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top img-fluid" src="../img/javascript.png" height ="180" width="auto" alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">Javascript</h4>
-      <p class="card-text">JavaScript, often abbreviated as JS, is a high-level, dynamic, weakly typed, prototype-based, multi-paradigm, and interpreted programming language.</p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top img-fluid" src="../img/node.png" height ="180" width="auto" alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">Node.js</h4>
-      <p class="card-text">Node.js is an open-source, cross-platform JavaScript run-time environment for executing JavaScript code server-side.</p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top img-fluid" src="../img/postgresql-logo.png" height ="180" width="auto" alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">PostgreSQL</h4>
-      <p class="card-text">PostgreSQL, often simply Postgres, is an object-relational database management system with an emphasis on extensibility and standards compliance.</p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top img-fluid" src="../img/jquerylogo.png" height ="180" width="auto" alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">jQuery</h4>
-      <p class="card-text">jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It is free, open-source software using the permissive MIT License.</p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top img-fluid" src="../img/react.png" height ="180" width="auto" alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">React.js</h4>
-      <p class="card-text">In computing, React is a JavaScript library for building user interfaces. It is maintained by Facebook, Instagram and a community of individual developers and corporations.</p>
-    </div>
-  </div>
-  </div>
+<div class="gallery" align="center">
+<h3>Photo Gallery of my Projects</h3>
+
+<div class="thumbnails">
+	<img onmouseover="getElementById('preview').src=this.src" src="../img/htmlcss.jpg" alt="">
+	<img onmouseover="getElementById('preview').src=this.src" src="../img/javascript.png" alt="">
+	<img onmouseover="getElementById('preview').src=this.src" src="../img/jquerylogo.png" alt="">
+	<img onmouseover="getElementById('preview').src=this.src" src="../img/node.png" alt="">
+	<img onmouseover="getElementById('preview').src=this.src" src="../img/postgresql-logo.png" alt="">
+	<img onmouseover="getElementById('preview').src=this.src" src="../img/react.png" alt="">
 </div>
+
+<div class="preview" align="center">
+	<img name="preview" src="../img/javascript.png" alt=""/>
+</div>
+
+</div> <!-- Close the gallery div -->
+
+<div id='footer'>
+      <div class="row">
+        <div class="media-container">
+            <a href="https://github.com/jkp9qd" id='git'class='social' target='_blank'></a>
+            <a href="https://www.linkedin.com/in/jarvis-potter-67a377136/" id='link'class='social' target='_blank'></a>
+            <a href="https://www.facebook.com/" id='facebook'class='social' target='_blank'></a>
+            <a href="" id='twitter'class='social' target='_blank'></a>
+        </div>
+      </div>
+    </div>
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="./js/profile.js"></script>
+<script src="../js/ap.js"></script>
 </body>
 </html>
