@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Jarvis Express Blog App</title>
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="../css/styles.css">
@@ -11,8 +11,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
 
 </head>
 <body>
@@ -43,30 +41,30 @@
 
    <div class = "container" style="padding-top: 20px;">
   <div class="jumbotron text-center">
-  <h1 class="display-3">Portfolio</h1>
-  <p class="lead">These is the MAGNIFICENT Portfolio that I built!</p>
+  <h1 class="display-3"></h1>
+  <p class="lead">This is my MAGNIFICENT Portfolio that I built!</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="/blog" role="button">Create a Post!</a>
+    <a class="btn btn-primary btn-lg" href="/blog" role="button"> Add a Post!</a>
   </p>
 </div>
 
 <div class="gallery" align="center">
-<h3>Photo Gallery of my Projects</h3>
+<h3>Gallery of My Projects</h3>
 
 <div class="thumbnails">
-	<img onmouseover="getElementById('preview').src=this.src" src="../img/htmlcss.jpg" alt="">
-	<img onmouseover="getElementById('preview').src=this.src" src="../img/javascript.png" alt="">
-	<img onmouseover="getElementById('preview').src=this.src" src="../img/jquerylogo.png" alt="">
-	<img onmouseover="getElementById('preview').src=this.src" src="../img/node.png" alt="">
-	<img onmouseover="getElementById('preview').src=this.src" src="../img/postgresql-logo.png" alt="">
-	<img onmouseover="getElementById('preview').src=this.src" src="../img/react.png" alt="">
+	<img onmouseover="preview.src=img1.src" name="img1" src="../img/htmlcss.jpg" alt=""/>
+		<img onmouseover="preview.src=img2.src" name="img2" src="../img/javascript.png" alt=""/>
+		<img onmouseover="preview.src=img3.src" name="img3" src="../img/jquerylogo.png" alt=""/>
+		<img onmouseover="preview.src=img4.src" name="img4" src="../img/node.png" alt=""/>
+		<img onmouseover="preview.src=img5.src" name="img5" src="../img/postgresql-logo.png" alt=""/>
+		<img onmouseover="preview.src=img6.src" name="img6" src="../img/react.png" alt=""/>
 </div>
 
 <div class="preview" align="center">
-	<img name="preview" src="../img/javascript.png" alt=""/>
+	<img name="preview" src="../img/react.png" alt=""/>
 </div>
 
-</div> <!-- Close the gallery div -->
+</div> 
 
 <div id='footer'>
       <div class="row">
